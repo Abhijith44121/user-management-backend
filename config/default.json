@@ -9,8 +9,9 @@
     "default": 10,
     "max": 50
   },
-  "postgresql": {
-    "client": "pg",
-    "connection": "postgres://postgres:1234@localhost:5432/user_dashboard"
+"postgresql": {
+  "client": "pg",
+  "connection": {
+    "connectionString": "postgres://postgres:1234@localhost:5432/user_dashboard"
   }
-}
+}}

@@ -17,6 +17,7 @@ import { logError } from './hooks/log-error.js'
 import { postgresql } from './postgresql.js'
 import { services } from './services/index.js'
 import { channels } from './channels.js'
+import 'dotenv/config';
 
 const app = express(feathers())
 

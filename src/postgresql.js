@@ -1,9 +1,11 @@
-// For more information about this file see https://dove.feathersjs.com/guides/cli/databases.html
 import knex from 'knex'
 
-export const postgresql = app => {
-  const config = app.get('postgresql')
-  const db = knex(config)
+export const postgresql = async (app) => {
+  const db = knex({
+    client: 'pg',
+    connection: process.env.DATABASE_URL
+  })
 
+  // 🔥 IMPORTANT: correct key name
   app.set('postgresqlClient', db)
 }
