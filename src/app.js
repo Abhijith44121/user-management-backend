@@ -23,15 +23,15 @@ if (process.env.NODE_ENV !== 'production') {
 
 const app = express(feathers())
 
-// Load app configuration
+
 app.configure(configuration(configurationValidator))
 app.use(cors())
 app.use(json())
 app.use(urlencoded({ extended: true }))
-// Host the public folder
+
 app.use('/', serveStatic(app.get('public')))
 
-// Configure services and real-time functionality
+
 app.configure(rest())
 app.configure(
   socketio({
@@ -45,11 +45,11 @@ app.configure(postgresql)
 app.configure(services)
 app.configure(channels)
 
-// Configure a middleware for 404s and the error handler
+
 app.use(notFound())
 app.use(errorHandler({ logger }))
 
-// Register hooks that run on all service methods
+
 app.hooks({
   around: {
     all: [logError]
@@ -58,7 +58,7 @@ app.hooks({
   after: {},
   error: {}
 })
-// Register application setup and teardown hooks here
+
 app.hooks({
   setup: [],
   teardown: []
