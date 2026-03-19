@@ -1,4 +1,3 @@
-// For more information about this file see https://dove.feathersjs.com/guides/cli/application.html
 import { feathers } from '@feathersjs/feathers'
 import express, {
   rest,
@@ -17,7 +16,10 @@ import { logError } from './hooks/log-error.js'
 import { postgresql } from './postgresql.js'
 import { services } from './services/index.js'
 import { channels } from './channels.js'
-import 'dotenv/config';
+
+if (process.env.NODE_ENV !== 'production') {
+  await import('dotenv/config');
+}
 
 const app = express(feathers())
 
